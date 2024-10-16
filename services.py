@@ -15,7 +15,7 @@ load_dotenv(dotenv_path=env_path, override=True)
 async def fetch_weather_data(session):
     """Функция запроса данных по API"""
     url = f"http://api.weatherapi.com/v1/current.json?key={os.getenv('API_KEY')}&q=Инновационный центр Сколково&aqi=no&lang=ru"
-    async with session.get(url) as  response:
+    async with session.get(url) as response:
         data = await response.json()
         current_weather = data["current"]
         wind_speed = round(current_weather["wind_kph"] / 3.6, 1)
